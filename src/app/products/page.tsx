@@ -1,65 +1,129 @@
+import Link from "next/link";
+import AmbientBackground from "@/components/experience/AmbientBackground";
+
+const MATERIALS = [
+  { mat: "AlGaN", accent: "#4cc3ff", use: "Wide-bandgap optoelectronics: deep-UV LEDs, biosensing" },
+  { mat: "GaN", accent: "#5b8cff", use: "Power & RF devices: 5G RF, defence radar" },
+  { mat: "SiC", accent: "#37e6a0", use: "High-power electronics: EV drivetrains, grid infrastructure" },
+  { mat: "HfO₂", accent: "#9d7bff", use: "Gate-stack engineering: high-k dielectrics" },
+];
+
+const ROADMAP = [
+  { name: "NexPharma-01", accent: "#59d8ff", desc: "Pharmaceutical candidate screening: binding affinity, ADMET", when: "2026" },
+  { name: "NexQM-01", accent: "#9d7bff", desc: "Quantum & topological materials: superconductors, quantum spin liquids", when: "2026" },
+  { name: "NexCat-01", accent: "#ffb02e", desc: "Catalysis & clean-energy materials: H₂ evolution, CO₂ reduction", when: "2027" },
+];
+
 export default function Products() {
   return (
-    <div className="max-w-5xl mx-auto px-6 md:px-12 py-12 md:py-20 animate-fade-in-up">
-      <div className="mb-16">
-        <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">Products & Roadmap</h1>
-        <p className="text-xl text-ink/70 dark:text-paper/70 max-w-3xl">
-          Deploying our autonomous discovery loop against the most critical scientific frontiers.
-        </p>
-      </div>
-
-      {/* Flagship Product */}
-      <div className="mb-24 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-nova-blue/10 to-electron/10 border border-nova-blue/30 relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-          <div className="font-mono text-9xl font-bold">NX-03</div>
-        </div>
-        <div className="relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nova-blue/20 text-nova-blue text-xs font-mono font-bold tracking-widest mb-6 uppercase">
-            Live Product
+    <>
+      <AmbientBackground accent="#37e6a0" secondary="#2f6bf0" />
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 md:px-12 md:py-24">
+        {/* Hero */}
+        <div className="mb-24 text-center">
+          <div data-reveal className="mb-6 font-mono text-sm font-bold tracking-[0.35em] text-plasma">
+            PRODUCTS &amp; ROADMAP
           </div>
-          <h2 className="text-4xl font-heading font-bold mb-4">NexCon-03</h2>
-          <p className="text-lg text-ink/80 dark:text-paper/80 mb-8 max-w-2xl">
-            Autonomously discovers novel compound semiconductor materials. Evaluating formation energy, bandgap, dopant defect energetics, and synthesisability proxies.
+          <h1 data-reveal style={{ "--reveal-delay": "100ms" } as React.CSSProperties} className="display-xl mb-8">
+            NexCon-03
+            <br />
+            <span className="text-glow font-serif font-normal italic text-plasma">is live.</span>
+          </h1>
+          <p
+            data-reveal
+            style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
+            className="mx-auto max-w-3xl text-xl font-medium leading-relaxed text-paper/80 md:text-2xl"
+          >
+            The autonomous discovery loop, deployed against the most critical
+            scientific frontier first: compound semiconductors.
           </p>
-          
-          <h3 className="text-xl font-heading font-bold mb-4">Material Families Covered:</h3>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {[
-              { mat: "AlGaN", use: "Wide-Bandgap Optoelectronics (Deep-UV LEDs, biosensing)" },
-              { mat: "GaN", use: "Power & RF Devices (5G RF, defence radar)" },
-              { mat: "SiC", use: "High-Power Electronics (EV drivetrains, grid infrastructure)" },
-              { mat: "HfO₂", use: "Gate-Stack Engineering (High-k dielectrics)" }
-            ].map(item => (
-              <div key={item.mat} className="p-4 rounded-xl bg-white/50 dark:bg-ink/50 border border-ink/5 dark:border-paper/10">
-                <div className="font-bold text-nova-blue mb-1">{item.mat}</div>
-                <div className="text-sm text-ink/70 dark:text-paper/70">{item.use}</div>
+        </div>
+
+        {/* Flagship */}
+        <div
+          data-reveal
+          className="relative mb-28 overflow-hidden rounded-3xl border-2 border-plasma/25 bg-gradient-to-br from-plasma/10 to-nova-blue/10 p-10 backdrop-blur-md md:p-14"
+        >
+          <div className="pointer-events-none absolute right-0 top-0 select-none p-8 font-mono text-9xl font-bold opacity-10">
+            NX-03
+          </div>
+          <div className="relative">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-plasma/15 px-5 py-2 font-mono text-sm font-bold tracking-widest text-plasma">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-plasma" />
+              LIVE PRODUCT
+            </div>
+            <h2 className="display-md mb-6">Autonomous semiconductor discovery.</h2>
+            <p className="mb-12 max-w-2xl text-xl leading-relaxed text-paper/80">
+              Discovers novel compound semiconductor materials, evaluating formation
+              energy, bandgap, dopant defect energetics and synthesisability proxies,
+              entirely on its own.
+            </p>
+            <h3 className="mb-6 font-mono text-sm font-bold tracking-[0.3em] text-paper/50">
+              MATERIAL FAMILIES COVERED
+            </h3>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {MATERIALS.map((item, k) => (
+                <div
+                  key={item.mat}
+                  data-reveal
+                  style={{ "--reveal-delay": `${k * 80}ms`, "--acc": item.accent } as React.CSSProperties}
+                  className="group rounded-2xl border-2 border-paper/10 bg-ink/40 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--acc)] hover:shadow-[0_0_40px_-6px_var(--acc)]"
+                >
+                  <div className="mb-2 font-heading text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--acc)]">
+                    {item.mat}
+                  </div>
+                  <div className="text-base leading-relaxed text-paper/70">{item.use}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Roadmap timeline */}
+        <div className="mb-28">
+          <h2 data-reveal className="display-md mb-14 text-center">
+            What&apos;s{" "}
+            <span className="gradient-text-warm font-serif font-normal italic">next.</span>
+          </h2>
+          <div className="relative flex flex-col gap-6 md:pl-10">
+            <div className="absolute bottom-4 left-[3px] top-4 hidden w-0.5 bg-gradient-to-b from-ion via-quantum to-fusion md:block" />
+            {ROADMAP.map((item, k) => (
+              <div
+                key={item.name}
+                data-reveal
+                style={{ "--reveal-delay": `${k * 100}ms`, "--acc": item.accent } as React.CSSProperties}
+                className="group relative flex flex-col justify-between gap-4 rounded-3xl border-2 border-paper/10 bg-white/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--acc)] hover:shadow-[0_0_44px_-8px_var(--acc)] md:flex-row md:items-center"
+              >
+                <div className="absolute -left-[43px] top-1/2 hidden h-4 w-4 -translate-y-1/2 rounded-full border-2 border-ink bg-[var(--acc)] md:block" />
+                <div>
+                  <h3 className="mb-2 font-heading text-2xl font-bold transition-colors duration-300 group-hover:text-[var(--acc)] md:text-3xl">
+                    {item.name}
+                  </h3>
+                  <p className="text-lg text-paper/70">{item.desc}</p>
+                </div>
+                <div className="shrink-0 font-mono text-xl font-bold tracking-widest text-paper/40 transition-colors duration-300 group-hover:text-[var(--acc)]">
+                  {item.when}
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Roadmap */}
-      <div>
-        <h2 className="text-3xl font-heading font-bold mb-8">Future Roadmap</h2>
-        <div className="space-y-4">
-          {[
-            { name: "NexPharma-01", desc: "Pharmaceutical candidate screening (binding affinity, ADMET)", status: "In Development — 2026" },
-            { name: "NexQM-01", desc: "Quantum & topological materials (superconductors, quantum spin liquids)", status: "In Development — 2026" },
-            { name: "NexCat-01", desc: "Catalysis & clean-energy materials (H₂ evolution, CO₂ reduction)", status: "In Development — 2027" }
-          ].map(item => (
-            <div key={item.name} className="flex flex-col md:flex-row md:items-center justify-between p-6 rounded-2xl border border-ink/10 dark:border-paper/10 gap-4">
-              <div>
-                <h4 className="text-xl font-bold mb-1">{item.name}</h4>
-                <p className="text-sm text-ink/70 dark:text-paper/70">{item.desc}</p>
-              </div>
-              <div className="font-mono text-xs text-ink/50 dark:text-paper/50 tracking-wider uppercase shrink-0">
-                {item.status}
-              </div>
-            </div>
-          ))}
+        {/* CTA */}
+        <div data-reveal className="text-center">
+          <h2 className="display-md mb-8">
+            Point it at{" "}
+            <span className="text-glow font-serif font-normal italic text-plasma">your</span>{" "}
+            frontier.
+          </h2>
+          <Link
+            href="/contact"
+            className="inline-block rounded-full bg-plasma px-12 py-5 text-lg font-bold text-ink transition-all hover:scale-105 hover:shadow-[0_0_36px_rgba(55,230,160,0.6)]"
+          >
+            Request access →
+          </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }

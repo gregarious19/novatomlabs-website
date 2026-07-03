@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import AmbientBackground from "@/components/experience/AmbientBackground";
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -8,12 +9,12 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
-    
+
     const form = e.currentTarget;
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("https://formspree.io/f/mgoqzwoq", {
+      const res = await fetch("https://formspree.io/f/mojoyejy", {
         method: "POST",
         headers: { Accept: "application/json" },
         body: formData,
@@ -25,89 +26,110 @@ export default function Contact() {
       } else {
         setStatus("error");
       }
-    } catch (err) {
+    } catch {
       setStatus("error");
     }
   };
 
+  const inputClass =
+    "w-full rounded-xl border-2 border-paper/10 bg-white/5 px-5 py-4 text-lg font-medium backdrop-blur-sm transition-all focus:border-photon focus:shadow-[0_0_28px_rgba(255,92,157,0.25)] focus:outline-none";
+
   return (
-    <div className="max-w-3xl mx-auto px-6 md:px-12 py-12 md:py-20 animate-fade-in-up">
-      <div className="mb-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">Request Access</h1>
-        <p className="text-lg text-ink/70 dark:text-paper/70">
-          Partner with NovAtom Labs or request access to the NexCon-03 platform.
-        </p>
-      </div>
-
-      <div className="p-8 md:p-10 rounded-3xl glass-dark border border-ink/10 dark:border-paper/10 relative overflow-hidden">
-        {status === "success" ? (
-          <div className="text-center py-12 animate-fade-in-up">
-            <div className="w-16 h-16 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center mx-auto mb-6">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h3 className="text-2xl font-bold mb-2">Transmission Received</h3>
-            <p className="text-ink/70 dark:text-paper/70">We will be in touch shortly.</p>
-            <button 
-              onClick={() => setStatus("idle")}
-              className="mt-8 px-6 py-2 rounded-full border border-ink/20 dark:border-paper/20 hover:bg-ink/5 dark:hover:bg-paper/5 transition-colors text-sm"
-            >
-              Send another message
-            </button>
+    <>
+      <AmbientBackground accent="#ff5c9d" secondary="#9d7bff" />
+      <div className="relative z-10 mx-auto max-w-4xl px-6 py-16 md:px-12 md:py-24">
+        <div className="mb-16 text-center">
+          <div data-reveal className="mb-6 font-mono text-sm font-bold tracking-[0.35em] text-photon">
+            REQUEST ACCESS
           </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2 opacity-80">Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                required
-                className="w-full px-4 py-3 rounded-xl bg-ink/5 dark:bg-white/5 border border-ink/10 dark:border-white/10 focus:outline-none focus:border-nova-blue transition-colors"
-                placeholder="Dr. Jane Doe"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2 opacity-80">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                required
-                className="w-full px-4 py-3 rounded-xl bg-ink/5 dark:bg-white/5 border border-ink/10 dark:border-white/10 focus:outline-none focus:border-nova-blue transition-colors"
-                placeholder="jane@university.edu"
-              />
-            </div>
+          <h1 data-reveal style={{ "--reveal-delay": "100ms" } as React.CSSProperties} className="display-lg mb-8">
+            Run your
+            <br />
+            <span className="text-glow font-serif font-normal italic text-photon">discovery</span>{" "}
+            session.
+          </h1>
+          <p
+            data-reveal
+            style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
+            className="mx-auto max-w-2xl text-xl font-medium leading-relaxed text-paper/80"
+          >
+            Partner with NovAtom Labs or request access to the NexCon-03 platform.
+          </p>
+        </div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2 opacity-80">Message / Request</label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows={5}
-                required
-                className="w-full px-4 py-3 rounded-xl bg-ink/5 dark:bg-white/5 border border-ink/10 dark:border-white/10 focus:outline-none focus:border-nova-blue transition-colors resize-none"
-                placeholder="How can NovAtom Labs help accelerate your research?"
-              />
+        <div
+          data-reveal
+          style={{ "--reveal-delay": "320ms" } as React.CSSProperties}
+          className="relative overflow-hidden rounded-3xl border-2 border-photon/20 bg-white/5 p-8 backdrop-blur-md md:p-12"
+        >
+          {status === "success" ? (
+            <div className="py-12 text-center">
+              <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-plasma/20 text-plasma">
+                <svg className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="mb-3 font-heading text-3xl font-bold md:text-4xl">Transmission received.</h3>
+              <p className="text-lg text-paper/70">We will be in touch shortly.</p>
+              <button
+                onClick={() => setStatus("idle")}
+                className="mt-10 rounded-full border-2 border-paper/20 px-8 py-3 text-base font-bold transition-all hover:scale-105 hover:border-paper/60 hover:bg-paper/5"
+              >
+                Send another message
+              </button>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-7">
+              <div>
+                <label htmlFor="name" className="mb-3 block font-mono text-sm font-bold tracking-widest text-paper/60">
+                  NAME
+                </label>
+                <input type="text" id="name" name="name" required className={inputClass} placeholder="Dr. Jane Doe" />
+              </div>
 
-            {status === "error" && (
-              <div className="text-red-500 text-sm">An error occurred. Please try again.</div>
-            )}
+              <div>
+                <label htmlFor="email" className="mb-3 block font-mono text-sm font-bold tracking-widest text-paper/60">
+                  EMAIL
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className={inputClass}
+                  placeholder="jane@university.edu"
+                />
+              </div>
 
-            <button 
-              type="submit" 
-              disabled={status === "loading"}
-              className="w-full py-4 rounded-xl bg-nova-blue text-white font-semibold transition-all hover:bg-electron disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {status === "loading" ? "Transmitting..." : "Send Message"}
-            </button>
-          </form>
-        )}
+              <div>
+                <label htmlFor="message" className="mb-3 block font-mono text-sm font-bold tracking-widest text-paper/60">
+                  MESSAGE / REQUEST
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                  className={`${inputClass} resize-none`}
+                  placeholder="How can NovAtom Labs help accelerate your research?"
+                />
+              </div>
+
+              {status === "error" && (
+                <div className="text-base font-bold text-photon">An error occurred. Please try again.</div>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full rounded-xl bg-gradient-to-r from-photon to-quantum py-5 text-lg font-bold text-white transition-all hover:scale-[1.02] hover:shadow-[0_0_36px_rgba(255,92,157,0.5)] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {status === "loading" ? "Transmitting…" : "Send message →"}
+              </button>
+            </form>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -25,8 +25,8 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "NovAtom Labs — Hyperautomated Research Lab",
-  description: "NovAtom Labs deploys autonomous discovery loops that hypothesise, simulate, validate, and learn — continuously, across scientific domains.",
+  title: "NovAtom Labs | Hyperautomated Research Lab",
+  description: "NovAtom Labs deploys autonomous discovery loops that hypothesise, simulate, validate, and learn continuously, across scientific domains.",
   icons: {
     icon: "/assets/favicon.svg",
     shortcut: "/assets/png/favicon-32.png",
@@ -43,9 +43,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${manrope.variable} ${instrumentSerif.variable} font-sans antialiased bg-paper text-ink selection:bg-nova-blue selection:text-white`}
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${manrope.variable} ${instrumentSerif.variable} font-sans antialiased bg-ink text-paper selection:bg-nova-blue selection:text-white`}
       >
         <Navbar />
         <main className="min-h-screen pt-24 pb-12">
