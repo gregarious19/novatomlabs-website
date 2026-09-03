@@ -5,13 +5,13 @@ const TEAM = [
     name: "Arnav Kulshrestha",
     role: "CO-FOUNDER & CEO",
     accent: "#ffb02e",
-    body: "Computational physics, LQM architecture, materials science, and semiconductor physics. Deep focus on quantum and solid-state physics as the theoretical foundation for the system.",
+    body: "",
   },
   {
-    name: "Pranay Sharma",
-    role: "CO-FOUNDER & CTO",
+    name: "Sattwik Das",
+    role: "CO-FOUNDER & CMO",
     accent: "#59d8ff",
-    body: "Machine learning, deep learning, and AI infrastructure. Specialises in agentic AI architecture, building the autonomous reasoning and orchestration layer that drives the LLM-LQM loop.",
+    body: "",
   },
 ];
 
