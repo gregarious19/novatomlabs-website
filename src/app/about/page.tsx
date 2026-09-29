@@ -8,8 +8,8 @@ const TEAM = [
     body: "",
   },
   {
-    name: "Sattwik Das",
-    role: "CO-FOUNDER & CMO",
+    name: "Prof. Karthik Venkateshan",
+    role: "Scientific Advisor",
     accent: "#59d8ff",
     body: "",
   },
