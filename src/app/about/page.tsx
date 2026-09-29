@@ -97,7 +97,7 @@ export default function About() {
                 </div>
                 <p className="text-lg leading-relaxed text-paper/75">{t.body}</p>
                 <div className="mt-8 font-mono text-xs font-bold tracking-widest text-paper/40">
-                  STUDENT · BITS PILANI
+                   BITS PILANI
                 </div>
               </div>
             ))}
